@@ -11,22 +11,22 @@ def all_fresh_ingredients(arr):
     count=0
     #order
     arr = sorted(arr, key = lambda item: int(item.split('-')[0]))
+    new_list=[]
+    print(arr)
     #remove overlap
-    start_before = 0
-    end_before = 0
+    lowest = int(arr[0].split('-')[0])
+    highest = int(arr[0].split('-')[1])
     for item in arr:
         start = int(item.split('-')[0])
         end = int(item.split('-')[1])
-        if start<=end_before and end_before<=end:
-            start = end_before+1
-            ########## HERE ######################
-        elif :
-        ##########################################
-        start_before=start
-        end_before=end
-        count+=end-start+1
-
-    return count
+        if start<=highest+1:
+            highest = max(highest,end)
+        else :
+            new_list.append((lowest,highest))
+            lowest,highest = start,end
+    
+    new_list.append((lowest,highest))
+    return sum(max - min +1 for min,max in new_list)
 
 
 
@@ -65,6 +65,7 @@ for id in ids:
     fresh_count+=fresh(id,id_ranges)
 
 id_count = all_fresh_ingredients(id_ranges)
+
 
 
 print(f'Ans 1: {fresh_count}, Ans 2: {id_count}')
