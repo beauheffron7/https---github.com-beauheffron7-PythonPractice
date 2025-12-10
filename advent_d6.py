@@ -14,7 +14,7 @@ test_arr = [
 
 #part 1
 num_arr = []
-for line in test_arr:
+for line in arr:
     line_nums = []
     curr_num = ''
     for index,char in enumerate(line):
@@ -51,7 +51,7 @@ print(f'Ans1: {count}')
 #part 2
 
 char_arr = []
-for line in test_arr:
+for line in arr:
     line_chars = []
     for char in line:
         line_chars.append(char)
@@ -75,7 +75,7 @@ while right>=0:
         curr_num+=char_arr[top][right]
 
     top+=1
-print(a)
+#print(a)
 
 ans2 = []
 x=1
@@ -83,29 +83,31 @@ position =1
 num=int(a[0])
 
 
-print(ops)
-
-########BROKEN
+#print(ops)
 
 
 while position<len(a):
-    if a[position] == '':
-        print(a[position])
-        num=int(a[position])
-    
     if a[position]!= '' and ops[len(ops)-x] =='+':
-        print(num,int(a[position]))
+        #print(num,int(a[position]))
         num=int(num) + int(a[position])
     elif a[position]!= '' and ops[len(ops)-x] =='*':
-        print(int(a[position]))
+        #print(int(a[position]))
         num = int(num) * int(a[position])
     if position == len(a):
         ans2.append(num)
-    print(a[position],num,x,ops[len(ops)-x])
+        x+=1
+        num=a[position+1]
+    if a[position] == '' and num!='':
+        ans2.append(num)
+        x+=1
+        num=a[position+1]
+        position+=1
+        
+    #print(a[position],num,x,ops[len(ops)-x])
     position+=1
-
 ans2.append(num)
-print(ans2)
+
+print('Ans2:',sum(ans2))
 
 
 
